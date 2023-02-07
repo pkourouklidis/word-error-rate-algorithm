@@ -10,6 +10,6 @@ def detector(trainSet, liveSet, parameters):
         jiwer.ReduceToListOfListOfWords()
     ])
 
-    wer = jiwer.wer(liveSet[firstColumn], liveSet[secondColumn], truth_transform=transformation, hypothesis_transform=transformation)
+    wer = jiwer.wer(liveSet[firstColumn].tolist(), liveSet[secondColumn].tolist(), truth_transform=transformation, hypothesis_transform=transformation)
     threshold = float (parameters.get("threshold", 0.3))
     return int(wer>threshold), wer
